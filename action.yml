@@ -39,10 +39,6 @@ inputs:
     description: The message to send if status is failure
     default: ''
     required: false
-  fields:
-    description: 'JSON string containing an array of fields to attach to the notification'
-    default: '[]'
-    required: false
   author_name:
     description: 'Author name'
     default: ''
