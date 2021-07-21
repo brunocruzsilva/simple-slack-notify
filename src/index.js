@@ -29,6 +29,9 @@ try {
   const failureText = envsubst(core.getInput('failure_text'))
   const cancelledText = envsubst(core.getInput('cancelled_text'))
   const fields = JSON.parse(envsubst(core.getInput('fields')) || '[]')
+  const authorName = envsubst(core.getInput('author_name'))
+  const authorLink = envsubst(core.getInput('author_link'))
+  const authorIcon = envsubst(core.getInput('author_icon'))
 
   let color = envsubst(core.getInput('color'))
   let text = envsubst(core.getInput('text'))
@@ -62,6 +65,9 @@ try {
       attachments: [
         {
           fallback: text,
+          author_name: authorName,
+          author_link: authorLink,
+          author_icon: authorIcon,
           text,
           color,
           fields
