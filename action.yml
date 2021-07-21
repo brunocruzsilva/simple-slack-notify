@@ -39,8 +39,20 @@ inputs:
     description: The message to send if status is failure
     default: ''
     required: false
-  cancelled_text:
-    description: The message to send if status is cancelled
+  fields:
+    description: 'JSON string containing an array of fields to attach to the notification'
+    default: '[]'
+    required: false
+  author_name:
+    description: 'Author name'
+    default: ''
+    required: false
+  author_link:
+    description: 'Author github link'
+    default: ''
+    required: false
+  author_icon:
+    description: 'Author image link'
     default: ''
     required: false
   fields:
