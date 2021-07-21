@@ -39,7 +39,7 @@ inputs:
     description: The message to send if status is failure
     default: ''
     required: false
- cancelled_text:
+  cancelled_text:
     description: The message to send if status is cancelled
     default: ''
     required: false
