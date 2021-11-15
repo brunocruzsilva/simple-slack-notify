@@ -12,12 +12,9 @@ const core = require('@actions/core')
 const { IncomingWebhook } = require('@slack/webhook')
 
 try {
-  if (!process.env.SLACK_WEBHOOK_URL) {
-    throw new Error('SLACK_WEBHOOK_URL is not set!')
-  }
-  console.log(process.env.SLACK_WEBHOOK_URL);
-  
-  const slack = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL)
+  const webhookUrl = envsubst(core.getInput('webhook_url'));
+
+  const slack = new IncomingWebhook(webhookUrl || process.env.SLACK_WEBHOOK_URL)
 
   /* eslint-disable no-eval */
   const disableEval = !!core.getInput('disable_eval')

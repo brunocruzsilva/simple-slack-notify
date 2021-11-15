@@ -59,3 +59,6 @@ inputs:
     description: 'JSON string containing an array of fields to attach to the notification'
     default: '[]'
     required: false
+  webhook_url: 
+    description: 'Webhook URL' 
+    required: false
