@@ -11,15 +11,17 @@
 const core = require('@actions/core')
 const { IncomingWebhook } = require('@slack/webhook')
 
-try {
+try {  
+/* eslint-disable no-eval */
+  const disableEval = !!core.getInput('disable_eval')
+  const env = process.env // eslint-disable-line
+  const envsubst = (str) => (disableEval ? str : eval(`\`${str}\``))
+
   const webhookUrl = envsubst(core.getInput('webhook_url'));
 
   const slack = new IncomingWebhook(webhookUrl || process.env.SLACK_WEBHOOK_URL)
 
-  /* eslint-disable no-eval */
-  const disableEval = !!core.getInput('disable_eval')
-  const env = process.env // eslint-disable-line
-  const envsubst = (str) => (disableEval ? str : eval(`\`${str}\``))
+
 
   const channel = envsubst(core.getInput('channel'))
   const username = envsubst(core.getInput('username'))
